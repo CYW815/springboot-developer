@@ -16,3 +16,6 @@ spring:
             scope:
               - email
               - profile
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: study-springboot
