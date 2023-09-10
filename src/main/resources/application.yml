@@ -12,12 +12,6 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-            client-id: 726646765074-oc79brf9h225jvi7m47a0l4121o49spm.apps.googleusercontent.com
-            client-secret: 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
             scope:
               - email
               - profile
-jwt:
-  issuer: ajufresh@gmail.com
-  secret_key: study-springboot
