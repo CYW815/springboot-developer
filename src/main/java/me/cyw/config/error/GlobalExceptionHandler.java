@@ -1,9 +1,13 @@
 package me.cyw.config.error;
 
+import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import me.cyw.config.error.exception.BusinessBaseException;
+import me.cyw.config.error.exception.NotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -18,8 +22,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessBaseException.class)
     protected ResponseEntity<ErrorResponse> handle(BusinessBaseException e){
-        log.error("BusinessBaseException, e");
+        log.error("BusinessBaseException", e);
         return createErrorResponseEntity(e.getErrorCode());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    protected ResponseEntity<ErrorResponse> handle(MethodArgumentNotValidException e){
+        log.error("MethodArgumentNotValidException", e);
+        return createErrorResponseEntity(ErrorCode.INVALID_INPUT_VALUE);
     }
 
     @ExceptionHandler(Exception.class)
