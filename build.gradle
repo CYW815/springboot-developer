@@ -51,6 +51,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
 	implementation 'mysql:mysql-connector-java'
+
+	// 가짜 데이터 생성 라이브러리
+	implementation 'com.github.javafaker:javafaker:1.0.2'
+
+	// 발리데이션
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 }
 
 bootJar {

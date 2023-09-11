@@ -2,6 +2,7 @@ package me.cyw.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import me.cyw.config.error.exception.ArticleNotFoundException;
 import me.cyw.domain.Article;
 import me.cyw.dto.AddArticleRequest;
 import me.cyw.dto.UpdateArticleRequest;
@@ -27,7 +28,7 @@ public class BlogService {
 
     public Article findById(long id) {
         return blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found" + id));
+                .orElseThrow(ArticleNotFoundException::new);
     }
 
     public void delete(long id){

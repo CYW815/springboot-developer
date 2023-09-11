@@ -1,2 +1,12 @@
-package me.cyw.config.error.exception;public class NotFoundException {
+package me.cyw.config.error.exception;
+
+import me.cyw.config.error.ErrorCode;
+
+public class NotFoundException extends BusinessBaseException{
+    public NotFoundException(ErrorCode errorCode){
+        super(errorCode.getMessage(), errorCode);
+    }
+    public NotFoundException() {
+        super(ErrorCode.NOT_FOUND);
+    }
 }
